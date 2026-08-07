@@ -5,17 +5,189 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    * { box-sizing: border-box; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     body { 
       background: linear-gradient(to bottom, #ffffff, #f0f5f0); 
       font-family: 'Segoe UI', Arial, sans-serif; 
-      text-align: center; 
-      padding: 30px 20px; 
+      padding: 0; 
       margin: 0; 
       line-height: 1.8; 
       color: #333;
     }
-    img { max-width: 100%; height: auto; }
+
+    /* === NAVIGASI ATAS === */
+    nav {
+      background: #1a1a1a;
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      position: sticky;
+      top: 0;
+      z-index: 99;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .nav-logo img {
+      height: 50px;
+      width: auto;
+    }
+    .nav-text {
+      text-align: left;
+    }
+    .nav-text h1 {
+      font-size: 20px;
+      color: #fff;
+      letter-spacing: 2px;
+      margin: 0;
+      line-height: 1.2;
+    }
+    .nav-text p {
+      font-size: 12px;
+      color: #d4af37;
+      margin: 0;
+      letter-spacing: 1px;
+    }
+    .menu-icon {
+      font-size: 28px;
+      color: #fff;
+      cursor: pointer;
+      padding: 5px 12px;
+      user-select: none;
+    }
+    .menu-icon:hover { color: #d4af37; }
+
+    /* === MENU DROPDOWN === */
+    .menu-dropdown {
+      display: none;
+      position: absolute;
+      right: 20px;
+      top: 65px;
+      background: #fff;
+      min-width: 200px;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.12);
+      overflow: hidden;
+    }
+    .menu-dropdown.show { display: block; }
+    .menu-dropdown a {
+      display: block;
+      padding: 12px 18px;
+      color: #333;
+      text-decoration: none;
+      font-size: 14px;
+      border-bottom: 1px solid #f5f5f5;
+    }
+    .menu-dropdown a:hover {
+      background: #f0f5f0;
+      color: #2c5c47;
+      padding-left: 22px;
+    }
+
+    /* === BAGIAN UTAMA / HERO === */
+    .hero {
+      background: linear-gradient(rgba(26,61,46,0.75), rgba(26,61,46,0.65)), url('conteiner-shipment.png');
+      background-size: cover;
+      background-position: center;
+      padding: 60px 25px;
+      text-align: center;
+      color: #fff;
+    }
+    .hero h2 {
+      font-size: 38px;
+      line-height: 1.2;
+      margin-bottom: 25px;
+      font-weight: 600;
+    }
+    .hero h2 span { color: #d4af37; }
+    .hero p {
+      font-size: 17px;
+      max-width: 700px;
+      margin: 0 auto 35px auto;
+      opacity: 0.92;
+      line-height: 1.6;
+    }
+
+    /* === TOMBOL UTAMA === */
+    .btn-quote {
+      display: inline-block;
+      background: linear-gradient(135deg, #d4af37, #b8860b);
+      color: #000;
+      font-weight: bold;
+      font-size: 17px;
+      padding: 16px 40px;
+      border-radius: 50px;
+      text-decoration: none;
+      box-shadow: 0 4px 15px rgba(212,175,55,0.3);
+      transition: transform 0.3s ease;
+      margin-bottom: 18px;
+      width: 100%;
+      max-width: 360px;
+    }
+    .btn-quote:hover { transform: translateY(-3px); }
+
+    .btn-wa {
+      display: inline-block;
+      background: rgba(255,255,255,0.18);
+      color: #fff;
+      font-size: 16px;
+      padding: 14px 30px;
+      border-radius: 50px;
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.35);
+      backdrop-filter: blur(6px);
+      width: 100%;
+      max-width: 360px;
+      transition: background 0.3s ease;
+    }
+    .btn-wa:hover { background: rgba(255,255,255,0.28); }
+
+    /* === ANGKA STATISTIK === */
+    .stats {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-top: 45px;
+      flex-wrap: wrap;
+    }
+    .stat-item { text-align: center; }
+    .stat-num { font-size: 34px; font-weight: bold; color: #d4af37; }
+    .stat-label { font-size: 13px; text-transform: uppercase; letter-spacing: 1px; opacity: 0.85; }
+
+    /* === ISI WEBSITE === */
+    main {
+      padding: 40px 20px;
+      max-width: 780px;
+      margin: 0 auto;
+    }
+    .section { 
+      margin: 0 auto 50px auto; 
+      text-align: left; 
+      background: #fff;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 2px 15px rgba(0,0,0,0.04);
+      border-top: 4px solid #2c5c47;
+    }
+    h3 { 
+      color: #1a3d2e; 
+      font-size: 20px; 
+      text-align: center; 
+      margin-top: 0;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #e8eee8;
+    }
+    .product-grid { 
+      display: flex; 
+      flex-wrap: wrap; 
+      justify-content: center; 
+      gap: 5px;
+    }
     .product-img { 
       max-width: 240px; 
       border-radius: 12px; 
@@ -27,44 +199,6 @@
       transform: translateY(-5px);
       box-shadow: 0 8px 20px rgba(44,92,71,0.15);
     }
-    .section { 
-      max-width: 780px; 
-      margin: 0 auto 50px auto; 
-      text-align: left; 
-      background: #fff;
-      padding: 30px;
-      border-radius: 16px;
-      box-shadow: 0 2px 15px rgba(0,0,0,0.04);
-      border-top: 4px solid #2c5c47;
-    }
-    .product-grid { 
-      display: flex; 
-      flex-wrap: wrap; 
-      justify-content: center; 
-      gap: 5px;
-    }
-    h3 { 
-      color: #1a3d2e; 
-      font-size: 20px; 
-      text-align: center; 
-      margin-top: 0;
-      margin-bottom: 20px;
-      padding-bottom: 10px;
-      border-bottom: 2px solid #e8eee8;
-    }
-    .tagline {
-      font-size: 18px; 
-      color: #b8860b; 
-      font-style: italic; 
-      margin-bottom: 40px;
-      letter-spacing: 1px;
-    }
-    .contact-box {
-      background: linear-gradient(135deg, #f8faf8, #f0f5f0);
-      border-top: 4px solid #b8860b;
-    }
-    a { transition: color 0.3s ease; }
-    a:hover { color: #b8860b; }
     .feature-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -77,147 +211,237 @@
       font-size: 14px;
       border-left: 3px solid #2c5c47;
     }
+    .product-desc {
+      font-size:14px; 
+      color:#444; 
+      margin-top:20px; 
+      padding:15px; 
+      background:#f8faf8; 
+      border-radius:8px;
+    }
+    .contact-box {
+      background: linear-gradient(135deg, #f8faf8, #f0f5f0);
+      border-top: 4px solid #b8860b;
+      text-align: center;
+    }
+    .contact-box a { color: #2c5c47; text-decoration: none; }
+    .contact-box a:hover { color: #b8860b; }
+    .footer-note {
+      text-align: center;
+      margin-top: 50px;
+      padding-top: 20px;
+      border-top: 1px solid #eee;
+      font-size: 13px;
+      color: #777;
+    }
+
     @media (max-width: 600px) {
+      .hero h2 { font-size: 28px; }
       .feature-grid { grid-template-columns: 1fr; }
       .product-img { max-width: 100%; }
+      .nav-text h1 { font-size: 17px; }
+      .stats { gap: 25px; }
     }
   </style>
 </head>
 <body>
-  
-  <!-- === LOGO & JUDUL === -->
-  <img src="logo.jpg" alt="FHATARA INTERNATIONAL Logo" style="max-width:320px; width:85%; margin:0 auto 15px auto; display:block;">
-  <h1 style="font-size:40px; color:#1a3d2e; margin:0 0 5px 0; letter-spacing:3px; text-align:center;">FHATARA</h1>
-  <h2 style="font-size:20px; color:#2c5c47; margin:0 0 12px 0; font-weight:normal; text-align:center;">INTERNATIONAL</h2>
-  <p class="tagline">— Connecting Indonesia to the Global Market —</p>
 
-  <!-- === TENTANG KAMI === -->
-  <div class="section">
-    <h3>🏢 WHO WE ARE</h3>
-    <p style="color:#444; font-size:15px; margin:10px 0;">
-      <strong>FHATARA INTERNATIONAL</strong> is an Indonesian export sourcing company connecting international buyers with trusted Indonesian manufacturers, farmers, and producers.
-    </p>
-    <p style="color:#444; font-size:15px; margin:10px 0;">
-      We specialize in sourcing premium Indonesian commodities — bridging Indonesia's rich natural resources with global buyers through reliable sourcing, strict quality control, transparent communication, and competitive pricing.
-    </p>
-    <p style="color:#444; font-size:15px; margin:10px 0;">
-      Our mission: To become your trusted sourcing partner — delivering consistent quality, full export documentation support, and sustainable long-term business relationships.
-    </p>
-  </div>
-
-  <!-- === KEUNGGULAN === -->
-  <div class="section">
-    <h3>⭐ WHY CHOOSE FHATARA</h3>
-    <div class="feature-grid">
-      <div class="feature-item">✅ Trusted Supplier Network</div>
-      <div class="feature-item">✅ Competitive Prices</div>
-      <div class="feature-item">✅ Quality Inspection</div>
-      <div class="feature-item">✅ Export Quality & On-time Delivery</div>
-      <div class="feature-item">✅ Stable Supply</div>
-      <div class="feature-item">✅ Customized Sourcing</div>
-      <div class="feature-item">✅ Complete Export Documentation</div>
-      <div class="feature-item">✅ Fast & Responsive Communication</div>
+  <!-- === NAVIGASI ATAS === -->
+  <nav>
+    <div class="nav-logo">
+      <img src="logo.jpg" alt="FHATARA Logo">
+      <div class="nav-text">
+        <h1>FHATARA</h1>
+        <p>INTERNATIONAL</p>
+      </div>
     </div>
-  </div>
-
-  <!-- === PRODUK: KELAPA === -->
-  <div class="section">
-    <h3>🥥 Coconut Products</h3>
-    <div class="product-grid">
-      <img src="choconut-shell-charcoal.png" alt="Coconut Shell Charcoal" class="product-img">
-      <img src="sheel-choconut-bbq.png" alt="BBQ Coconut Shell Charcoal" class="product-img">
-      <img src="chocopiet-chocofiber.png" alt="Cocopeat & Coir Fiber" class="product-img">
-      <img src="varian-kelapa.png" alt="Coconut Product Variants" class="product-img">
+    <div>
+      <span class="menu-icon" onclick="toggleMenu()">&#9776;</span>
+      <div class="menu-dropdown" id="menuBox">
+        <a href="#about">🏢 About Us</a>
+        <a href="#why">⭐ Why Choose Us</a>
+        <a href="#coconut">🥥 Coconut Products</a>
+        <a href="#charcoal">🪵 Charcoal & Briquettes</a>
+        <a href="#seafood">🐟 Frozen Seafood</a>
+        <a href="#spices">🌿 Spices & Commodities</a>
+        <a href="#quality">✅ Quality Standards</a>
+        <a href="#markets">🌍 Global Markets</a>
+        <a href="#contact">📬 Contact Us</a>
+      </div>
     </div>
-    <p style="font-size:14px; color:#444; margin-top:20px; padding:15px; background:#f8faf8; border-radius:8px;">
-      Fresh Coconuts · Coconut Shell Charcoal · BBQ Grade · Cocopeat · Coir Fiber · Virgin & Crude Coconut Oil · Coconut Sugar · Coconut Flour · <em>Custom products available upon request.</em>
-    </p>
-  </div>
+  </nav>
 
-  <!-- === PRODUK: ARANG & BRIKET === -->
-  <div class="section">
-    <h3>🪵 Charcoal & Briquettes</h3>
-    <div class="product-grid">
-      <img src="charcoal-briquettes-shisha.png" alt="Shisha Briquettes" class="product-img">
-      <img src="charcoal-briquettes-bbq.png" alt="BBQ Briquettes" class="product-img">
-      <img src="briquetts.png" alt="Charcoal Briquettes" class="product-img">
-      <img src="sawdust-briquettes.png" alt="Sawdust Briquettes" class="product-img">
-      <img src="hardwood-lumb-charcoal.png" alt="Hardwood Lump Charcoal" class="product-img">
-      <img src="lumb-hardwood.png" alt="Hardwood Charcoal" class="product-img">
+  <script>
+    function toggleMenu() {
+      document.getElementById('menuBox').classList.toggle('show');
+    }
+    window.onclick = function(e) {
+      if (!e.target.matches('.menu-icon')) {
+        document.getElementById('menuBox').classList.remove('show');
+      }
+    }
+  </script>
+
+  <!-- === BAGIAN UTAMA DENGAN TOMBOL === -->
+  <section class="hero">
+    <h2>Connecting Indonesia to the <span>Global Market</span></h2>
+    <p>FHATARA INTERNATIONAL is your trusted export sourcing partner — delivering premium Indonesian commodities to buyers worldwide with verified suppliers, rigorous quality inspection, and complete export documentation.</p>
+    
+    <a href="https://wa.me/628999402249?text=Hello%2C%20I%20would%20like%20to%20request%20a%20quotation%20for%20Indonesian%20seafood%20and%20commodities." target="_blank" class="btn-quote">
+      Request Quotation →
+    </a>
+    <br>
+    <a href="https://wa.me/628999402249" target="_blank" class="btn-wa">
+      💬 Chat on WhatsApp
+    </a>
+
+    <div class="stats">
+      <div class="stat-item">
+        <div class="stat-num">8+</div>
+        <div class="stat-label">Product Categories</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">20+</div>
+        <div class="stat-label">Global Markets</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">100%</div>
+        <div class="stat-label">Quality Inspected</div>
+      </div>
     </div>
-    <p style="font-size:14px; color:#444; margin-top:20px; padding:15px; background:#f8faf8; border-radius:8px;">
-      Coconut Shell Charcoal · Shisha/Hookah Briquettes · BBQ Briquettes · Hexagonal Briquettes · Sawdust Briquettes · Tamarind Wood · Hardwood Lump Charcoal · Bamboo Charcoal · Wood Pellets · <em>Custom shapes available.</em>
-    </p>
-  </div>
+  </section>
 
-  <!-- === PRODUK: HASIL LAUT === -->
-  <div class="section">
-    <h3>🐟 Frozen Seafood</h3>
-    <div class="product-grid">
-      <img src="tuna_1.png" alt="Tuna" class="product-img">
-      <img src="saned-fish_1.png" alt="Processed Fish" class="product-img">
-      <img src="Mixed-fishproducts.png" alt="Mixed Seafood" class="product-img">
+  <!-- === ISI WEBSITE === -->
+  <main>
+
+    <!-- === TENTANG KAMI === -->
+    <div class="section" id="about">
+      <h3>🏢 WHO WE ARE</h3>
+      <p style="color:#444; font-size:15px; margin:10px 0;">
+        <strong>FHATARA INTERNATIONAL</strong> is an Indonesian export sourcing company connecting international buyers with trusted Indonesian manufacturers, farmers, and producers.
+      </p>
+      <p style="color:#444; font-size:15px; margin:10px 0;">
+        We specialize in sourcing premium Indonesian commodities — bridging Indonesia's rich natural resources with global buyers through reliable sourcing, strict quality control, transparent communication, and competitive pricing.
+      </p>
+      <p style="color:#444; font-size:15px; margin:10px 0;">
+        Our mission: To become your trusted sourcing partner — delivering consistent quality, full export documentation support, and sustainable long-term business relationships.
+      </p>
     </div>
-    <p style="font-size:14px; color:#444; margin-top:20px; padding:15px; background:#f8faf8; border-radius:8px;">
-      Yellowfin Tuna · Skipjack Tuna · Mackerel · Sardines · Frozen & Canned · Fresh & Processed · <em>All sizes & cuts available.</em>
-    </p>
-  </div>
 
-  <!-- === PRODUK: REMPAH & KOMODITI === -->
-  <div class="section">
-    <h3>🌿 Spices & Other Commodities</h3>
-    <div class="product-grid">
-      <img src="spices.png" alt="Spices" class="product-img">
-      <img src="melati-segar.png" alt="Fresh Jasmine" class="product-img">
-      <img src="moringa.png" alt="Moringa" class="product-img">
-      <img src="serbuk-kelor.png" alt="Moringa Powder" class="product-img">
-      <img src="tehkelor.png" alt="Moringa Tea" class="product-img">
-      <img src="jagung.png" alt="Corn" class="product-img">
-      <img src="indo-comodity.png" alt="Indonesian Commodities" class="product-img">
-      <img src="conteiner-shipment.png" alt="Shipment" class="product-img">
+    <!-- === KEUNGGULAN === -->
+    <div class="section" id="why">
+      <h3>⭐ WHY CHOOSE FHATARA</h3>
+      <div class="feature-grid">
+        <div class="feature-item">✅ Trusted Supplier Network</div>
+        <div class="feature-item">✅ Competitive Prices</div>
+        <div class="feature-item">✅ Quality Inspection</div>
+        <div class="feature-item">✅ Export Quality & On-time Delivery</div>
+        <div class="feature-item">✅ Stable Supply</div>
+        <div class="feature-item">✅ Customized Sourcing</div>
+        <div class="feature-item">✅ Complete Export Documentation</div>
+        <div class="feature-item">✅ Fast & Responsive Communication</div>
+      </div>
     </div>
-    <p style="font-size:14px; color:#444; margin-top:20px; padding:15px; background:#f8faf8; border-radius:8px;">
-      Pepper · Nutmeg · Cloves · Cinnamon · Vanilla · Fresh & Dried Jasmine · Moringa (Leaves, Powder, Tea) · Coffee · Cocoa · Agricultural Products · <em>Custom sourcing available.</em>
-    </p>
-  </div>
 
-  <!-- === STANDAR KUALITAS === -->
-  <div class="section">
-    <h3>✅ Quality Standards</h3>
-    <p style="font-size:14px; color:#444; text-align:center; padding:15px; background:linear-gradient(to right, #f8faf8, #f0f5f0); border-radius:10px; line-height:2;">
-      Carefully Selected Raw Materials · Export Standard Packaging · Processed with High Standards · Clean & Safe · Moisture Controlled · Quality Checked Before Shipment · Comply with International Export Requirements
-    </p>
-  </div>
+    <!-- === PRODUK: KELAPA === -->
+    <div class="section" id="coconut">
+      <h3>🥥 Coconut Products</h3>
+      <div class="product-grid">
+        <img src="choconut-shell-charcoal.png" alt="Coconut Shell Charcoal" class="product-img">
+        <img src="sheel-choconut-bbq.png" alt="BBQ Coconut Shell Charcoal" class="product-img">
+        <img src="chocopiet-chocofiber.png" alt="Cocopeat & Coir Fiber" class="product-img">
+        <img src="varian-kelapa.png" alt="Coconut Product Variants" class="product-img">
+      </div>
+      <p class="product-desc">
+        Fresh Coconuts · Coconut Shell Charcoal · BBQ Grade · Cocopeat · Coir Fiber · Virgin & Crude Coconut Oil · Coconut Sugar · Coconut Flour · <em>Custom products available upon request.</em>
+      </p>
+    </div>
 
-  <!-- === PASAR TUJUAN === -->
-  <div class="section">
-    <h3>🌍 We Serve Global Markets</h3>
-    <p style="font-size:15px; color:#444; text-align:center; padding:10px; line-height:2;">
-      🌏 Middle East &nbsp; 🇪🇺 Europe &nbsp; 🌏 Asia &nbsp; 🌍 Africa &nbsp; 🇺🇸 North America &nbsp; 🌎 South America &nbsp; 🇦🇺 Australia
-    </p>
-  </div>
+    <!-- === PRODUK: ARANG & BRIKET === -->
+    <div class="section" id="charcoal">
+      <h3>🪵 Charcoal & Briquettes</h3>
+      <div class="product-grid">
+        <img src="charcoal-briquettes-shisha.png" alt="Shisha Briquettes" class="product-img">
+        <img src="charcoal-briquettes-bbq.png" alt="BBQ Briquettes" class="product-img">
+        <img src="briquetts.png" alt="Charcoal Briquettes" class="product-img">
+        <img src="sawdust-briquettes.png" alt="Sawdust Briquettes" class="product-img">
+        <img src="hardwood-lumb-charcoal.png" alt="Hardwood Lump Charcoal" class="product-img">
+        <img src="lumb-hardwood.png" alt="Hardwood Charcoal" class="product-img">
+      </div>
+      <p class="product-desc">
+        Coconut Shell Charcoal · Shisha/Hookah Briquettes · BBQ Briquettes · Hexagonal Briquettes · Sawdust Briquettes · Tamarind Wood · Hardwood Lump Charcoal · Bamboo Charcoal · Wood Pellets · <em>Custom shapes available.</em>
+      </p>
+    </div>
 
-  <!-- === KONTAK === -->
-  <div class="section contact-box">
-    <h3>📬 Contact Us</h3>
-    <p style="font-size:15px; color:#333; margin:12px 0; text-align:center;">
-      📧 <strong>Email:</strong><br>
-      <a href="mailto:fhatarainternational@gmail.com" style="color:#2c5c47; text-decoration:none; font-size:16px;">fhatarainternational@gmail.com</a>
-    </p>
-    <p style="font-size:15px; color:#333; margin:12px 0; text-align:center;">
-      💬 <strong>WhatsApp:</strong><br>
-      <a href="https://wa.me/628999402249" target="_blank" style="color:#2c5c47; text-decoration:none; font-size:16px;">+62 899-9402-249</a>
-    </p>
-    <p style="font-size:15px; color:#333; margin:12px 0; text-align:center;">
-      📍 <strong>Location:</strong><br>
-      Central Java, Indonesia
-    </p>
-  </div>
+    <!-- === PRODUK: HASIL LAUT === -->
+    <div class="section" id="seafood">
+      <h3>🐟 Frozen Seafood</h3>
+      <div class="product-grid">
+        <img src="tuna_1.png" alt="Tuna" class="product-img">
+        <img src="saned-fish_1.png" alt="Processed Fish" class="product-img">
+        <img src="Mixed-fishproducts.png" alt="Mixed Seafood" class="product-img">
+      </div>
+      <p class="product-desc">
+        Yellowfin Tuna · Skipjack Tuna · Mackerel · Sardines · Frozen & Canned · Fresh & Processed · <em>All sizes & cuts available.</em>
+      </p>
+    </div>
 
-  <p style="margin-top:50px; font-size:13px; color:#777; text-align:center; padding-bottom:30px; border-top:1px solid #eee; padding-top:20px;">
-    FHATARA INTERNATIONAL — Bridging Indonesia's Nature to the World<br>
-    © 2026 FHATARA INTERNATIONAL — All Rights Reserved
-  </p>
+    <!-- === PRODUK: REMPAH & KOMODITI === -->
+    <div class="section" id="spices">
+      <h3>🌿 Spices & Other Commodities</h3>
+      <div class="product-grid">
+        <img src="spices.png" alt="Spices" class="product-img">
+        <img src="melati-segar.png" alt="Fresh Jasmine" class="product-img">
+        <img src="moringa.png" alt="Moringa" class="product-img">
+        <img src="serbuk-kelor.png" alt="Moringa Powder" class="product-img">
+        <img src="tehkelor.png" alt="Moringa Tea" class="product-img">
+        <img src="jagung.png" alt="Corn" class="product-img">
+        <img src="indo-comodity.png" alt="Indonesian Commodities" class="product-img">
+        <img src="conteiner-shipment.png" alt="Shipment" class="product-img">
+      </div>
+      <p class="product-desc">
+        Pepper · Nutmeg · Cloves · Cinnamon · Vanilla · Fresh & Dried Jasmine · Moringa (Leaves, Powder, Tea) · Coffee · Cocoa · Agricultural Products · <em>Custom sourcing available.</em>
+      </p>
+    </div>
+
+    <!-- === STANDAR KUALITAS === -->
+    <div class="section" id="quality">
+      <h3>✅ Quality Standards</h3>
+      <p style="font-size:14px; color:#444; text-align:center; padding:18px; background:linear-gradient(to right, #f8faf8, #f0f5f0); border-radius:10px; line-height:2;">
+        Carefully Selected Raw Materials · Export Standard Packaging · Processed with High Standards · Clean & Safe · Moisture Controlled · Quality Checked Before Shipment · Comply with International Export Requirements
+      </p>
+    </div>
+
+    <!-- === PASAR TUJUAN === -->
+    <div class="section" id="markets">
+      <h3>🌍 We Serve Global Markets</h3>
+      <p style="font-size:15px; color:#444; text-align:center; padding:10px; line-height:2;">
+        🌏 Middle East &nbsp; 🇪🇺 Europe &nbsp; 🌏 Asia &nbsp; 🌍 Africa &nbsp; 🇺🇸 North America &nbsp; 🌎 South America &nbsp; 🇦🇺 Australia
+      </p>
+    </div>
+
+    <!-- === KONTAK === -->
+    <div class="section contact-box" id="contact">
+      <h3>📬 Contact Us</h3>
+      <p style="font-size:15px; color:#333; margin:12px 0;">
+        📧 <strong>Email:</strong><br>
+        <a href="mailto:fhatarainternational@gmail.com">fhatarainternational@gmail.com</a>
+      </p>
+      <p style="font-size:15px; color:#333; margin:12px 0;">
+        💬 <strong>WhatsApp:</strong><br>
+        <a href="https://wa.me/628999402249" target="_blank">+62 899-9402-249</a>
+      </p>
+      <p style="font-size:15px; color:#333; margin:12px 0;">
+        📍 <strong>Location:</strong><br>
+        Central Java, Indonesia
+      </p>
+    </div>
+
+    <p class="footer-note">
+      FHATARA INTERNATIONAL — Bridging Indonesia's Nature to the World<br>
+      © 2026 FHATARA INTERNATIONAL — All Rights Reserved
+    </p>
+  </main>
 
 </body>
 </html>
